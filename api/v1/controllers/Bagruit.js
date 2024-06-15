@@ -132,6 +132,17 @@ module.exports = {
         } else {
             res.status(404).json({ message: `No Bagruit found for subject ${subject}` });
         }
+    },
+    addNewBagrut: (req, res) => {
+        const newBagrut = {
+            NameSubject: req.body.NameSubject,
+            PdfUrl: req.body.PdfUrl,
+            Year: req.body.Year,
+            IsQuetions: req.body.IsQuetions
+        };
+
+        Bagruit.push(newBagrut);
+        res.status(201).json({ message: "Bagrut added successfully", newBagrut });
     }
 
 };
